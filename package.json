@@ -1,0 +1,31 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "demo project for heroku server deploy",
+  "engines": {
+    "node": "12.x"
+  },
+  "main": "index.js",
+  "scripts": {
+    "serve": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel": "babel src --watch --out-dir build ",
+    "dev": "node -r dotenv/config ./build/index.js"
+  },
+  "keywords": [
+    "server",
+    "deploy",
+    "heroku"
+  ],
+  "author": "nacho",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.10.1",
+    "@babel/core": "7.10.2",
+    "@babel/preset-env": "7.10.2",
+    "dotenv": "8.2.0"
+  }
+}
