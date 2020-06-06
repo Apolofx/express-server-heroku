@@ -1,12 +1,20 @@
 "use strict";
 
-var express = require("express");
+const express = require("express");
 
-var app = express();
-app.get("/", function (req, res) {
-  return res.status(200).send("Hello World");
+const app = express();
+
+const axios = require("axios");
+
+const cors = require("cors");
+
+app.use(cors({
+  origin: true
+}));
+app.use(express.json());
+app.get("/", (req, res) => {
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${req.body.city}&appid=${process.env.API_KEY}`;
+  return axios.get(url).then(response => res.status(200).send(response.data)).catch(error => res.status(500).send(error));
 });
-var port = process.env.PORT || 3000;
-app.listen(port, function () {
-  return console.log("Server listening on port ".concat(port));
-});
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Server listening on port ${port}`));
