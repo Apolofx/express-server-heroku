@@ -6,7 +6,6 @@ const cors = require("cors");
 app.use(cors({ origin: true }));
 app.use(express.json());
 app.get("/:city", (req, res) => {
-  // const city = req.params.city.split("%20").join(" ");
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${req.params.city}&appid=${process.env.API_KEY}`;
   return axios
     .get(url)
